@@ -1,0 +1,47 @@
+<app-navbar-pri></app-navbar-pri>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8">
+        <div class="row base">
+          <div class="col-sm-12 mainNews">
+            <h4  *ngIf="activatedRoute.snapshot.params.option == 'news'"> NOTICIAS RECIENTES </h4>
+            <h4  *ngIf="activatedRoute.snapshot.params.option == 'article'"> ARTICULOS RECIENTES </h4>
+            <h4  *ngIf="activatedRoute.snapshot.params.option == 'reviews'"> REVIEWS RECIENTES </h4>
+            <br>
+          </div>
+         
+            <div *ngFor="let Releases of _releaseView.data" (click)="_releaseView.redirectToNews(Releases.IDRELEASE,Releases.SINGLETITLE)" class="card col-sm-6 col-md-4">
+                <div *ngIf="Releases.IDRELEASETYPE == 10" class="card-top"> Noticia </div>
+                <div *ngIf="Releases.IDRELEASETYPE == 11" class="card-top"> Columna </div>
+                <div *ngIf="Releases.IDRELEASETYPE == 12" class="card-top"> Review </div>
+                <div *ngIf="Releases.IDRELEASETYPE == 13" class="card-top"> Carta al director </div>
+  
+                <img class="card-img-top img-fluid" src="{{Releases.MAINIMAGE}}" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-text">{{Releases.SINGLETITLE}}</p>
+                </div>
+              </div>
+        </div>
+        <div class="row">
+          <div class="col-12 btn-load-area">
+            <button *ngIf="_releaseView.loadActivated" (click)="_releaseView.getReleasesLoadMoarSubSection(9,6,subsection)" class="btn-load"> Cargar
+              más... </button>
+            <button *ngIf="_releaseView.loadActivated == false" (click)="_releaseView.getReleasesLoadMoarSubSection(9,6,subsection)"
+              class="btn-load">No se han encontrado más resultados… </button>
+          </div>
+        </div>
+      </div>
+    <div class="col-sm-4 recent-news">
+      <br>
+      <h4> NOTICIAS Destacadas </h4>
+      <div  *ngFor="let OutRelease of _releaseView.dataOutStanding" class="row justify-content-end row-recent-news">
+        <div class="col-7 recent-text text-center align-self-center">
+           <a href='{{_releaseView.DOMINIE_URI}}/ver/{{OutRelease.IDRELEASE}}/{{_releaseView.returnTitle(OutRelease.SINGLETITLE)}}'> {{OutRelease.SINGLETITLE}}</a>
+        </div>
+        <div class="col-5 recent-rounded"><img src="{{OutRelease.MAINIMAGE}}"
+          class="out-img img-thumbnail recent-rounded rounded-circle img-fluid"></div>
+        </div>
+
+    </div>
+  </div>
+</div>

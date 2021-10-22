@@ -1,1 +1,96 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    background: #333333 !important;
+}
+
+.container-fluid{
+    background: #333333;
+    
+}
+
+h1,h2,h3,h4{
+    color: #fff !important;
+}
+
+.recent-news,
+.recent-news> h1,
+.recent-news> h2,
+.recent-news> h3{
+    color: #fff;
+    text-align: right;
+    float: right;
+    width: 100%;
+}
+
+.recent-text::-webkit-scrollbar{
+    display: none;
+}
+
+
+.recent-news> h4{
+    font: normal 1.25rem 'Roboto Condensed' !important;
+    color: #fff;
+    font-weight: 100;
+    text-transform: uppercase;
+}
+
+.recent-news>h4::after {
+    border-bottom: 2px solid #fff;
+    content: "";
+    display: block;
+    position: relative;
+    margin: 0 1px;
+}
+.recent-news>h4::after {
+    margin-right: 60%;
+    top: -14px;
+}
+
+.row-recent-news{
+    background: rgba(0, 4, 40,0.9); 
+    background: -webkit-linear-gradient(to right, rgba(0, 78, 146,0.9), rgba(0, 4, 40,0.9));
+    background: linear-gradient(to right, rgba(0, 78, 146,0.9), rgba(0, 4, 40,0.9));
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 8px;
+}
+
+
+@media only screen and (max-width: 992px) {
+    .mainNews>h4::before {
+        margin-left: 80%; 
+        bottom: -14px;
+    }
+
+    .recent-news>h4::after {
+        margin-right: 85%;
+        top: -14px;
+        display: none;
+    }
+
+    .content-Statement > p >img{
+        margin: 5px !important;
+    }
+    
+}
+
+.out-img{
+    width: 450px;
+    height: 450px;
+}
+
+@media only screen and (min-width : 768px) and (max-width : 992px) {
+    .out-img{
+        width: 95px;
+        height: 95px;
+    }
+}
+
+@media only screen and (min-width : 576px) and (max-width : 767px) {
+    .out-img{
+        width: 60px;
+        height: 60px;
+    }
+}

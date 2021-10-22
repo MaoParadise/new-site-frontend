@@ -1,0 +1,67 @@
+<app-navbar-sec></app-navbar-sec>
+<div class="container-fluid">
+  <div *ngFor="let Release of data" class="row">
+    <div class="col-sm-8">
+      <br>
+      <button title="Compartir en Facebook" class="facebook-shared" (click)="facebookSharing(shareObj)"> <i
+          class="fab fa-facebook-f"></i> Facebook
+      </button>
+      <a target="_blank" class="twitter-shared" href="https://twitter.com/share?url={{shareObj.href}}"
+        [attr.data-text]="text" [attr.data-url]="url" title="Compartir en Twitter">
+        <i class="fab fa-twitter"></i> <span class="share-btn-text">Twitter</span>
+      </a>
+      <br>
+      <div class="titleCard">
+        <img src="{{ Release.SINGLEIMG }}" class="img-fluid" alt="">
+        <div class="titleStatement-1 d-none d-md-block">
+          <h2 class="text-center">{{Release.SINGLETITLE}}</h2>
+        </div>
+      </div>
+      <div class="titleStatement-2 d-block d-md-none">
+        <h2 class="text-center">{{Release.SINGLETITLE}}</h2>
+      </div>
+      <div class="autor">
+        Autor : {{ Release.USERNAMEHELPER }} | {{ Release.CREATEDDATERELEASE | amTimeAgo }}
+      </div>
+
+      <br>
+      <p class="first-Statement text-justify" [innerHTML]="onSafeHtml(Release.FIRSTSTATEMENTRELEASE)">
+        <br>
+      </p>
+      <hr>
+      <div class="content-Statement" [innerHTML]="onSafeHtml(Release.CONTENTRELEASE)"></div>
+      <br>
+      <div class="row">
+        <div class="col-12 sub-section-main" *ngIf="SubSectionProcessed != ''">
+          <button *ngFor="let subSection of SubSectionProcessed" class="btn sub-section" value="subSection"><a
+              href="{{_releaseView.DOMINIE_URI}}/find/{{subSection}}" >{{ subSection }}</a> </button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-sm-4 recent-news">
+      <br>
+      <h4> podrían interesarte </h4>
+      <div *ngFor="let Couldbe of dataCouldbe" class="row justify-content-end row-recent-news">
+        <div class="col-7 recent-text text-center align-self-center">
+          <a
+            href='{{_releaseView.DOMINIE_URI}}/ver/{{Couldbe.IDRELEASE}}/{{_releaseView.returnTitle(Couldbe.SINGLETITLE)}}'>{{Couldbe.SINGLETITLE}}</a>
+        </div>
+        <div class="col-5 recent-rounded"><img src="{{Couldbe.MAINIMAGE}}"
+            class="out-img img-thumbnail recent-rounded rounded-circle img-fluid">
+        </div>
+      </div>
+      <div *ngFor="let NoCouldbe of dataNoCouldbe" class="row justify-content-end row-recent-news">
+        <div class="col-7 recent-text text-center align-self-center">
+          <a
+            href='{{_releaseView.DOMINIE_URI}}/ver/{{NoCouldbe.IDRELEASE}}/{{_releaseView.returnTitle(NoCouldbe.SINGLETITLE)}}'>{{NoCouldbe.SINGLETITLE}}</a>
+        </div>
+        <div class="col-5 recent-rounded"><img src="{{NoCouldbe.MAINIMAGE}}"
+            class="out-img img-thumbnail recent-rounded rounded-circle img-fluid">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

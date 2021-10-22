@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-rainbow">
+    <div class="network">
+      Síguenos |    
+      <i class="fab fa-facebook-square"></i>
+      <i class="fab fa-youtube"> </i>
+      <i class="fab fa-twitter"> </i>
+      <i class="fas fa-envelope"></i>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row presentation-head ">
+          <div class="col-12 left-box">
+            <img class="img-fluid img-box" src="{{_navBarview.imgPresentation}}">
+            <a routerLink="/"><img class="img-fluid logo" src="assets/default/logo.png"></a> 
+            </div>
+              
+        </div>
+  </div>
+  <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark ">
+      <a class="navbar-brand" routerLink="/"><i class="fas fa-home"></i> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+              <a class="nav-link" (click)="_releaseView.getReleases(_releaseView.releasesCommands.start,_releaseView.releasesCommands.end,10)" routerLink="/news">Noticias <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="_releaseView.getReleases(_releaseView.releasesCommands.start,_releaseView.releasesCommands.end,11)" routerLink="/article">Articulos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="_releaseView.getReleases(_releaseView.releasesCommands.start,_releaseView.releasesCommands.end,12)" routerLink="/reviews">Reviews</a>
+            </li>
+      </ul>
+      <div class="col-sm-5 search-box">
+        <form class="form-inline input-group">
+          <input type="search" class="form-control" (click)="_releaseView.toggleDropDown()" [(ngModel)]="_releaseView.ngLike"  name="search" (input)="_releaseView.onChangeSearch()" placeholder="buscar...">
+          <div (clickOutside)="_releaseView.onClickedOutside()" *ngIf="_releaseView.showDropDown"  class="state-container-dropdown">
+            <div> 
+              <div class="state"  *ngFor="let releaseLike of _releaseView.dataLike">
+                <a class="" href='{{_releaseView.DOMINIE_URI}}/ver/{{releaseLike.IDRELEASE}}/{{_releaseView.returnTitle(releaseLike.SINGLETITLE)}}'> {{releaseLike.SINGLETITLE}} </a>
+                <br>
+                <button *ngIf="releaseLike.IDRELEASETYPE == 10"  class="btn sub-state"> Noticia </button>
+                <button *ngIf="releaseLike.IDRELEASETYPE == 11"  class="btn sub-state"> Columna </button>
+                <button *ngIf="releaseLike.IDRELEASETYPE == 12"  class="btn sub-state"> Review </button>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+        </form>
+      </div>
+    </div>
+  </nav>

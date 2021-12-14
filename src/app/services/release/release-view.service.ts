@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class ReleaseViewService {
 
-  DOMINIE_URI: string = 'http://192.168.43.101';
+  DOMINIE_URI: string = 'http://192.168.8.102';
   loadActivated: boolean = true;
   data: any;
   dataPush: any;

@@ -9,7 +9,7 @@ export class SetupService {
   data: any;
   DOMINIE_URI: string = 'http://localhost:4210'
   //API_URI: string = 'http://ec2-13-57-39-224.us-west-1.compute.amazonaws.com:3000/api';
-  API_URI: string = 'http://192.168.43.101:3000/api';
+  API_URI: string = 'https://neo-loot.herokuapp.com/api';
 
   bodyCredentials: any = {
     observe: 'body',
